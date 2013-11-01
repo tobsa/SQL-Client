@@ -42,6 +42,7 @@ public class SQLFrame extends JFrame {
     private JButton commandNextButton = new JButton("Next Command");
     private List<String> usedCommands = new ArrayList();
     private int usedCommandIndex;
+    private JLabel loginLabel = new JLabel();
     
     public SQLFrame() {        
         try {
@@ -87,6 +88,7 @@ public class SQLFrame extends JFrame {
         connectButton.addActionListener(new ButtonConnectListener());
         
         JPanel panel4 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        panel4.add(loginLabel);
         panel4.add(connectButton);
         panel4.setBorder(new EmptyBorder(0, 10, 0, 10));
         
@@ -143,6 +145,7 @@ public class SQLFrame extends JFrame {
                 commandTextArea.setEnabled(true);
                 commandClearButton.setEnabled(true);
                 commandExecuteButton.setEnabled(true);
+                loginLabel.setText("Logged in as: " + textField.getText());
             } 
             catch (ClassNotFoundException | SQLException ex) {
                 new MessageDialog(SQLFrame.this, ex.toString());
