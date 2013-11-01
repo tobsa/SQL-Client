@@ -1,0 +1,4 @@
+SQL Client/build/
+SQL Client/nbproject/
+*.xml
+*.mf
