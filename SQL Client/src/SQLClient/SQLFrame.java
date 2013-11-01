@@ -4,10 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -17,14 +15,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
@@ -44,14 +38,12 @@ public class SQLFrame extends JFrame {
     private JTextArea commandTextArea = new JTextArea(20, 50);
     private JButton commandClearButton = new JButton("Clear");
     private JButton commandExecuteButton = new JButton("Execute Query");
-    private JButton commandPrevButton = new JButton("Prev");
-    private JButton commandNextButton = new JButton("Next");
+    private JButton commandPrevButton = new JButton("Prev Command");
+    private JButton commandNextButton = new JButton("Next Command");
     private List<String> usedCommands = new ArrayList();
     private int usedCommandIndex;
     
-    public SQLFrame() {
-        JMenuBar menuBar = new JMenuBar();
-        
+    public SQLFrame() {        
         try {
             ObjectInputStream input = new ObjectInputStream(new FileInputStream("commands.ser"));
             usedCommands = (List<String>)input.readObject();
