@@ -2,6 +2,7 @@ package SQLClient;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileInputStream;
@@ -145,6 +146,7 @@ public class SQLFrame extends JFrame {
                 commandTextArea.setEnabled(true);
                 commandClearButton.setEnabled(true);
                 commandExecuteButton.setEnabled(true);
+                loginLabel.setFont(new Font("Arial", Font.PLAIN, 18));
                 loginLabel.setText("Logged in as: " + textField.getText());
             } 
             catch (ClassNotFoundException | SQLException ex) {
