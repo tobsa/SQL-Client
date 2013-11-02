@@ -33,8 +33,8 @@ import javax.swing.table.DefaultTableModel;
 public class SQLFrame extends JFrame {
     private Database database = new Database();
     private JTextField loginURLTextField = new JTextField("jdbc:sqlserver://hitsql-db.hb.se:56077", 25);
-    private JTextField textField = new JTextField(25);
-    private JPasswordField passwordField = new JPasswordField(25);
+    private JTextField textField = new JTextField("", 25);
+    private JPasswordField passwordField = new JPasswordField("", 25);
     private JButton connectButton = new JButton("Connect");
     private JTextArea commandTextArea = new JTextArea(20, 50);
     private JButton commandClearButton = new JButton("Clear");
@@ -52,7 +52,8 @@ public class SQLFrame extends JFrame {
             usedCommandIndex = usedCommands.size();
             input.close();
         } 
-        catch (IOException | ClassNotFoundException ex) {}
+        catch (IOException | ClassNotFoundException ex) {
+            System.out.println(ex);}
         
         setLayout(new FlowLayout(FlowLayout.LEFT));  
         
@@ -221,7 +222,7 @@ public class SQLFrame extends JFrame {
             try {                
                 ResultSet rs = database.executeQuery(commandTextArea.getText());
                 
-                if(!usedCommands.get(usedCommands.size() - 1).equals(commandTextArea.getText())) {
+                if(usedCommands.isEmpty() || !usedCommands.get(usedCommands.size() - 1).equals(commandTextArea.getText())) {
                     usedCommands.add(commandTextArea.getText());
                     usedCommandIndex = usedCommands.size() - 1;
 
